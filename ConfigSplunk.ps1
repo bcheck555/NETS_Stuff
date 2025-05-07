@@ -7,7 +7,6 @@
     [Parameter()][string]$installPath = "D:\Splunk",
     [Parameter()][string]$CaChain = "CAChain.pem",
     [Parameter()][string]$dbPath = "E:\Splunk\var\lib\splunk"
-
 )
 if ($bindDN -eq $null -or $bindDN -eq "") {
     $bindDN = Read-Host -Prompt "Enter distinguished name for LDAP account:"
@@ -19,10 +18,10 @@ if ($certPass -eq $null -or $certPass -eq "") {
     $certPass = Read-Host -Prompt "Enter a password for the private key:"
 }
 $tempPath = "C:\Temp"
-$etcPath = "$installPath\etc"
 $binPath = "$installPath\bin"
-$confPath = "$etcPath\system\local"
+$etcPath = "$installPath\etc"
 $certPath = "$etcPath\auth\mycerts"
+$confPath = "$etcPath\system\local"
 
 #Config
 if (!(Test-Path -Path $certPath -PathType Container)) {
@@ -31,7 +30,7 @@ if (!(Test-Path -Path $certPath -PathType Container)) {
 
 Copy-Item $tempPath\$caChain $certPath\$caChain
 
-& $tempPath\RequestNETSECCWebCert.ps1 $hostName $domainName $binPath $certPass $certPath
+& $tempPath\CertTool.ps1 $hostName $domainName $binPath $certPass $certPath
 
 #####BEGIN authentication.conf
 #####Creates new file

@@ -1,20 +1,28 @@
 ﻿param (
     [Parameter()][string]$hostName = $env:COMPUTERNAME,
+    [Parameter()][string]$domainName = $env:USERDNSDOMAIN,
     [Parameter()][string]$indexer = "log01.idc.local",
     [Parameter()][string]$certPass,
-    [Parameter()][string]$confPath = "C:\Program Files\SplunkUniversalForwarder\etc\system\local",
-    [Parameter()][string]$certPath = "C:\Program Files\SplunkUniversalForwarder\etc\auth\mycerts",
+    [Parameter()][string]$installPath = "C:\Program Files\SplunkUniversalForwarder",
     [Parameter()][string]$CaChain = "CAChain.pem"
-
 )
 if ($certPass -eq $null -or $certPass -eq "") {
     $certPass = Read-Host -Prompt "Enter a password for the private key:"
 }
+$tempPath = "C:\Temp"
+$binPath = "$installPath\bin"
+$etcPath = "$installPath\etc"
+$certPath = "$etcPath\auth\mycerts"
+$confPath = "$etcPath\system\local"
 
 #Config
 if (!(Test-Path -Path $certPath -PathType Container)) {
     New-Item -ItemType "directory" -Path $certPath
 }
+
+& $tempPath\CertTool.ps1 $hostName $domainName $binPath $certPass $certPath
+Copy-Item $tempPath\CertTool.ps1 $certPath
+Copy-Item $tempPath\$caChain $certPath\$caChain
 
 #####BEGIN deploymentclient.conf
 #####Creates new file

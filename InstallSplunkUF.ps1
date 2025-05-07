@@ -1,18 +1,14 @@
-﻿Unblock-File c:\temp\*.ps1
+﻿#Unblock-File c:\temp\*.ps1
 #https://docs.splunk.com/Documentation/Forwarder/9.4.1/Forwarder/InstallaWindowsuniversalforwarderfromaninstaller
 
 $hostName = ($env:COMPUTERNAME).ToUpper()
 $domainName = ($env:USERDNSDOMAIN).ToUpper()
 $certPass = Read-Host -Prompt "Enter a password for the private key:"
-$url = "https://download.splunk.com/products/universalforwarder/releases/9.4.1/windows"
+#$url = "https://download.splunk.com/products/universalforwarder/releases/9.4.1/windows"
 $file = "splunkforwarder-9.4.1-e3bdab203ac8-windows-x64.msi"
 $tempPath = "C:\Temp"
 $installPath = "C:\Program Files\SplunkUniversalForwarder"
-$binPath = "$installPath\bin"
-$confPath = "$installPath\etc\system\local"
-$certPath = "$installPath\etc\auth\mycerts"
 $indexer = "log01.idc.local"
-$caChain = "CAChain.pem"
 $arguments = "/i `"$tempPath\$file`" " +
   "AGREETOLICENSE=Yes " +
   "INSTALLDIR=`"$installPath`" " +
@@ -57,11 +53,7 @@ if (!(Test-Path -Path $tempPath -PathType Container)) {
 Start-Process msiexec.exe -ArgumentList $arguments -Wait
 
 #Config
-& $tempPath\ConfigSplunkUF.ps1 $hostName $indexer $certPass $confPath $certPath $caChain
-& $tempPath\RequestNETSECCWebCert.ps1 $hostName $domainName $binPath $certPass $certPath
-
-Copy-Item $tempPath\RequestNETSECCWebCert.ps1 $certPath
-Copy-Item $tempPath\$caChain $certPath\$caChain
+& $tempPath\ConfigSplunkUF.ps1 $hostName $domainName $indexer $certPass $installPath
 
 net stop SplunkForwarder
 Start-Sleep -Seconds 10
