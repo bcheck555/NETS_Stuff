@@ -53,7 +53,7 @@ if (!(Test-Path -Path $tempPath -PathType Container)) {
 Start-Process msiexec.exe -ArgumentList $arguments -Wait
 
 #Config
-& $tempPath\ConfigSplunkUF.ps1 $hostName $domainName $indexer $certPass $installPath
+& $tempPath\SplunkUF_Config.ps1 $hostName $domainName $indexer $certPass $installPath
 
 net stop SplunkForwarder
 Start-Sleep -Seconds 10

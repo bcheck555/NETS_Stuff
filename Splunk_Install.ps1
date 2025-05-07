@@ -59,8 +59,8 @@ if (!(Test-Path -Path $tempPath -PathType Container)) {
 #Invoke-WebRequest -Uri $url\$file -OutFile $tempPath\$file
 Start-Process msiexec.exe -ArgumentList $arguments -Wait
 
-& $tempPath\ConfigSplunk.ps1 $hostName $domainName $bindDN $bindDNPass $certPass $installPath $caChain
+& $tempPath\Splunk_Config.ps1 $hostName $domainName $bindDN $bindDNPass $certPass $installPath $caChain
 
-& $tempPath\ConfigSplunkApps.ps1 $adminUser $adminPass
+& $tempPath\Splunk_AppsConfig.ps1 $adminUser $adminPass
 
 Add-MpPreference -ExclusionPath $installPath
