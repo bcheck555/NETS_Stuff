@@ -86,54 +86,39 @@ Set-Content -Path $confPath\$confFile -Value $configData -Force
 $confFile = "indexes.conf"
 $configData = "
 [default]
+frozenTimePeriodInSecs = 31536000
+enableDataIntegrityControl = true
+enableTsidxReduction = true
 
 [linux]
 homePath = `$SPLUNK_DB\`$_index_name\db
 coldPath = `$SPLUNK_DB\`$_index_name\colddb
 thawedPath = `$SPLUNK_DB\`$_index_name\thaweddb
-frozenTimePeriodInSecs = 31536000
-enableDataIntegrityControl = true
-enableTsidxReduction = true
 
 [wincerts]
 homePath = `$SPLUNK_DB\`$_index_name\db
 coldPath = `$SPLUNK_DB\`$_index_name\colddb
 thawedPath = `$SPLUNK_DB\`$_index_name\thaweddb
-frozenTimePeriodInSecs = 31536000
-enableDataIntegrityControl = true
-enableTsidxReduction = true
 
 [windows]
 homePath = `$SPLUNK_DB\`$_index_name\db
 coldPath = `$SPLUNK_DB\`$_index_name\colddb
 thawedPath = `$SPLUNK_DB\`$_index_name\thaweddb
-frozenTimePeriodInSecs = 31536000
-enableDataIntegrityControl = true
-enableTsidxReduction = true
 
 [wineventlog]
 homePath = `$SPLUNK_DB\`$_index_name\db
 coldPath = `$SPLUNK_DB\`$_index_name\colddb
 thawedPath = `$SPLUNK_DB\`$_index_name\thaweddb
-frozenTimePeriodInSecs = 31536000
-enableDataIntegrityControl = true
-enableTsidxReduction = true
 
 #[winiislog]
 #homePath = `$SPLUNK_DB\`$_index_name\db
 #coldPath = `$SPLUNK_DB\`$_index_name\colddb
 #thawedPath = `$SPLUNK_DB\`$_index_name\thaweddb
-#frozenTimePeriodInSecs = 31536000
-#enableDataIntegrityControl = true
-#enableTsidxReduction = true
 
 #[winsqllog]
 #homePath = `$SPLUNK_DB\`$_index_name\db
 #coldPath = `$SPLUNK_DB\`$_index_name\colddb
 #thawedPath = `$SPLUNK_DB\`$_index_name\thaweddb
-#frozenTimePeriodInSecs = 31536000
-#enableDataIntegrityControl = true
-#enableTsidxReduction = true
 "
 Set-Content -Path $confPath\$confFile -Value $configData -Force
 #####END indexes.conf
