@@ -197,25 +197,27 @@ stateOnClient = enabled
 restartSplunkd = true
 stateOnClient = enabled
 
-[serverClass:Universal Forwarders - RHEL]
-machineTypesFilter = linux-x86_64
-whitelist.0 = *
-
-[serverClass:Universal Forwarders - RHEL:app:IndexerConfig]
-
-[serverClass:Universal Forwarders - RHEL:app:Splunk_TA_nix]
-restartSplunkd = true
-
 [serverClass:Universal Forwarders - WIN:app:IndexerConfig_win]
-restartSplunkd = true
-
-[serverClass:Universal Forwarders - RHEL:app:IndexerConfig_nix]
 restartSplunkd = true
 
 [serverClass:Universal Forwarders - WIN:app:TA-windows-certificate-store]
 restartSplunkd = true
 
 [serverClass:Universal Forwarders - WIN:app:TA-windows-firewall-status-check]
+restartSplunkd = true
+
+[serverClass:Universal Forwarders - NIX]
+machineTypesFilter = linux-x86_64
+restartSplunkd = true
+whitelist.0 = *
+
+[serverClass:Universal Forwarders - NIX:app:IndexerConfig_rhel]
+restartSplunkd = true
+
+[serverClass:Universal Forwarders - NIX:app:Splunk_TA_nix]
+restartSplunkd = true
+
+[serverClass:Universal Forwarders - NIX:app:IndexerConfig_nix]
 restartSplunkd = true
 "
 Set-Content -Path $confPath\$confFile -Value $configData -Force
