@@ -209,7 +209,7 @@ restartSplunkd = true
 [serverClass:Universal Forwarders - WIN:app:IndexerConfig_win]
 restartSplunkd = true
 
-[serverClass:Universal Forwarders - RHEL:app:IndexerConfig_rhel]
+[serverClass:Universal Forwarders - RHEL:app:IndexerConfig_nix]
 restartSplunkd = true
 
 [serverClass:Universal Forwarders - WIN:app:TA-windows-certificate-store]

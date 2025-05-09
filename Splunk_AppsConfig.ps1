@@ -27,7 +27,7 @@ Copy-Item -Path d:\Splunk\etc\apps\TA-windows-firewall-status-check -Destination
 Expand-Archive -Path C:\Temp\SplunkApps\Splunk_TA_Windows.zip -DestinationPath d:\Splunk\etc\deployment-apps -Force
 Expand-Archive -Path C:\Temp\SplunkApps\Splunk_TA_nix.zip -DestinationPath d:\Splunk\etc\deployment-apps -Force
 Expand-Archive -Path C:\Temp\SplunkApps\IndexerConfig_win.zip -DestinationPath d:\Splunk\etc\deployment-apps -Force
-Expand-Archive -Path C:\Temp\SplunkApps\IndexerConfig_rhel.zip -DestinationPath d:\Splunk\etc\deployment-apps -Force
+Expand-Archive -Path C:\Temp\SplunkApps\IndexerConfig_nix.zip -DestinationPath d:\Splunk\etc\deployment-apps -Force
 Expand-Archive -Path C:\Temp\SplunkApps\TA-windows-certificate-store.zip -DestinationPath d:\Splunk\etc\deployment-apps -Force
 Expand-Archive -Path C:\Temp\SplunkApps\TA-windows-firewall-status-check.zip -DestinationPath d:\Splunk\etc\deployment-apps -Force
 
