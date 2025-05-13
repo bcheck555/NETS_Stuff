@@ -110,6 +110,11 @@ homePath = `$SPLUNK_DB\`$_index_name\db
 coldPath = `$SPLUNK_DB\`$_index_name\colddb
 thawedPath = `$SPLUNK_DB\`$_index_name\thaweddb
 
+[windefender]
+homePath = `$SPLUNK_DB\`$_index_name\db
+coldPath = `$SPLUNK_DB\`$_index_name\colddb
+thawedPath = `$SPLUNK_DB\`$_index_name\thaweddb
+
 #[winiislog]
 #homePath = `$SPLUNK_DB\`$_index_name\db
 #coldPath = `$SPLUNK_DB\`$_index_name\colddb
@@ -183,19 +188,15 @@ Set-Content -Path $confPath\$confFile -Value $configData -Force
 #####Creates new file
 $confFile = "serverclass.conf"
 $configData = "
+
 [serverClass:Universal Forwarders - WIN]
 blacklist.0 = log01
 machineTypesFilter = windows-x64
 restartSplunkd = true
 whitelist.0 = *
 
-[serverClass:Universal Forwarders - WIN:app:IndexerConfig]
-restartSplunkd = true
-stateOnClient = enabled
-
 [serverClass:Universal Forwarders - WIN:app:Splunk_TA_Windows]
 restartSplunkd = true
-stateOnClient = enabled
 
 [serverClass:Universal Forwarders - WIN:app:IndexerConfig_win]
 restartSplunkd = true
@@ -204,6 +205,9 @@ restartSplunkd = true
 restartSplunkd = true
 
 [serverClass:Universal Forwarders - WIN:app:TA-windows-firewall-status-check]
+restartSplunkd = true
+
+[serverClass:Universal Forwarders - WIN:app:TA-microsoft-windefender]
 restartSplunkd = true
 
 [serverClass:Universal Forwarders - NIX]
