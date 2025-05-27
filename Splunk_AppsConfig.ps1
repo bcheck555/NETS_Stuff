@@ -24,6 +24,11 @@ Copy-Item -Path d:\Splunk\etc\apps\Splunk_TA_nix -Destination d:\Splunk\etc\depl
 Copy-Item -Path d:\Splunk\etc\apps\TA-windows-certificate-store -Destination d:\Splunk\etc\deployment-apps -Recurse
 Copy-Item -Path d:\Splunk\etc\apps\TA-microsoft-windefender -Destination d:\Splunk\etc\deployment-apps -Recurse
 Copy-Item -Path d:\Splunk\etc\apps\TA-windows-firewall-status-check -Destination d:\Splunk\etc\deployment-apps -Recurse
+
+Expand-Archive -Path C:\Temp\SplunkApps\Splunk_TA_Windows.zip -DestinationPath d:\Splunk\etc\apps -Force
+Expand-Archive -Path C:\Temp\SplunkApps\TA-microsoft-windefender.zip -DestinationPath d:\Splunk\etc\apps -Force
+Expand-Archive -Path C:\Temp\SplunkApps\TA-windows-firewall-status-check.zip -DestinationPath d:\Splunk\etc\apps -Force
+
 Expand-Archive -Path C:\Temp\SplunkApps\Splunk_TA_Windows.zip -DestinationPath d:\Splunk\etc\deployment-apps -Force
 Expand-Archive -Path C:\Temp\SplunkApps\Splunk_TA_nix.zip -DestinationPath d:\Splunk\etc\deployment-apps -Force
 Expand-Archive -Path C:\Temp\SplunkApps\IndexerConfig_win.zip -DestinationPath d:\Splunk\etc\deployment-apps -Force
