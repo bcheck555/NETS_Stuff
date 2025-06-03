@@ -201,14 +201,14 @@ restartSplunkd = true
 [serverClass:Universal Forwarders - WIN:app:IndexerConfig_win]
 restartSplunkd = true
 
-[serverClass:Universal Forwarders - WIN:app:TA-windows-certificate-store]
-restartSplunkd = true
+# [serverClass:Universal Forwarders - WIN:app:TA-windows-certificate-store]
+# restartSplunkd = true
 
-[serverClass:Universal Forwarders - WIN:app:TA-windows-firewall-status-check]
-restartSplunkd = true
+# [serverClass:Universal Forwarders - WIN:app:TA-windows-firewall-status-check]
+# restartSplunkd = true
 
-[serverClass:Universal Forwarders - WIN:app:TA-microsoft-windefender]
-restartSplunkd = true
+# [serverClass:Universal Forwarders - WIN:app:TA-microsoft-windefender]
+# restartSplunkd = true
 
 [serverClass:Universal Forwarders - NIX]
 machineTypesFilter = linux-x86_64
@@ -259,6 +259,7 @@ $confFile = "splunk-launch.conf"
 $configData = "
 SPLUNK_HOME=$installPath
 SPLUNK_SERVER_NAME=Splunkd
+SPLUNK_FIPS=1
 PYTHONHTTPSVERIFY=0
 PYTHONUTF8=1
 SPLUNK_DB=$dbPath
