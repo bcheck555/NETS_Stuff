@@ -37,11 +37,39 @@ Copy-Item $tempPath\$caChain $certPath\$caChain
 $confFile = "authentication.conf"
 $configData = "
 [splunk_auth]
+###Splunk Checklist V-221632
 minPasswordLength = 15
+###
+###Splunk Checklist V-221629
 minPasswordUppercase = 1
+###
+###Splunk Checklist V-221630
 minPasswordLowercase = 1
+###
+###Splunk Checklist V-221633
 minPasswordSpecial = 1
+###
+###Splunk Checklist V-221631
 minPasswordDigit = 1
+###
+constantLoginTime = 0.000
+enablePasswordHistory = 0
+expireAlertDays = 15
+###Splunk Checklist V-221634
+expirePasswordDays = 60
+###
+expireUserAccounts = 0
+forceWeakPasswordChange = 0
+###Splunk Checklist V-221941
+lockoutAttempts = 3
+lockoutThresholdMins = 15
+###
+lockoutMins = 30
+lockoutUsers = 1
+###Splunk Checklist V-221635
+passwordHistoryCount = 24
+###
+verboseLoginFailMsg = 1
 
 [authentication]
 authSettings = NETS
@@ -53,7 +81,10 @@ can_delete = Splunk Admins
 user = Splunk Users
 
 [NETS]
+###Splunk Checklist V-221609
 SSLEnabled = 1
+port = 636
+###
 anonymous_referrals = 0
 bindDN = $bindDN
 bindDNpassword = $bindDNPass
@@ -68,7 +99,6 @@ host = DC01.IDC.LOCAL
 nestedGroups = 0
 network_timeout = 20
 pagelimit = -1
-port = 636
 realNameAttribute = cn
 sizelimit = 1000
 timelimit = 15
@@ -87,7 +117,9 @@ $confFile = "indexes.conf"
 $configData = "
 [default]
 frozenTimePeriodInSecs = 31536000
+###Splunk Checklist V-221613
 enableDataIntegrityControl = true
+###
 enableTsidxReduction = true
 
 [linux]
@@ -135,8 +167,10 @@ $configData = "
 [default]
 host = $hostName
 
+###Splunk Checklist V-221608
 [splunktcp-ssl:9997]
 disabled = 0
+###
 
 [SSL]
 serverCert = $certPath\LOG01_Splunk2.pem
@@ -156,6 +190,9 @@ $configData = "
 [general]
 serverName = $hostName
 trustedIP = 127.0.0.1
+###Splunk Checklist V-221938
+sessionTimeout = 15m
+###
 
 [sslConfig]
 serverCert = $certPath\LOG01_Splunk2.pem
@@ -236,7 +273,9 @@ $configData = ""
 if (!( $content -like "*SCRIPT MODIFIED*" )) {
     $configData = "
 [settings]
+###Splunk Checklist V-221607
 enableSplunkWebSSL = 1
+###
 serverCert = $certPath\$hostName`_Splunk.pem
 privKeyPath = $certPath\$hostName`_Splunk.key
 sslPassword = $certPass
@@ -248,6 +287,9 @@ SSOMode = permissive
 trustedIP = 127.0.0.1
 allowSsoWithoutChangingServerConf = 1
 certBasedUserAuthMethod = PIV
+###Splunk Checklist V-221931
+login_content = <script>function DoDBanner() {alert("You are accessing a U.S. Government (USG) Information System (IS) that is provided for USG-authorized use only.\nBy using this IS (which includes any device attached to this IS), you consent to the following conditions:\n-The USG routinely intercepts and monitors communications on this IS for purposes including, but not limited to, penetration testing, COMSEC monitoring, network operations and defense, personnel misconduct (PM), law enforcement (LE), and counterintelligence (CI) investigations.\n-At any time, the USG may inspect and seize data stored on this IS.\n-Communications using, or data stored on, this IS are not private, are subject to routine monitoring, interception, and search, and may be disclosed or used for any USG-authorized purpose.\n-This IS includes security measures (e.g., authentication and access controls) to protect USG interests--not for your personal benefit or privacy.\n-Notwithstanding the above, using this IS does not constitute consent to PM, LE or CI investigative searching or monitoring of the content of privileged communications, or work product, related to personal representation or services by attorneys, psychotherapists, or clergy, and their assistants. Such communications and work product are private and confidential. See User Agreement for details.");}DoDBanner();</script>
+###
 ###SCRIPT MODIFIED###
 "
 }
@@ -259,7 +301,9 @@ $confFile = "splunk-launch.conf"
 $configData = "
 SPLUNK_HOME=$installPath
 SPLUNK_SERVER_NAME=Splunkd
+###Splunk Checklist V-221600
 SPLUNK_FIPS=1
+###
 PYTHONHTTPSVERIFY=0
 PYTHONUTF8=1
 SPLUNK_DB=$dbPath
