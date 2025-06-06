@@ -111,12 +111,28 @@ userNameAttribute = userprincipalname
 Set-Content -Path $confPath\$confFile -Value $configData -Force
 #####END authentication.conf
 
+#####BEGIN health.conf
+#####Creates new file
+$confFile = "health.conf"
+$configData = "
+[alert_action:email]
+###Splunk Checklist V-221625
+disabled = 0
+action.to = siatsstechnicalsupportteam@stfltd.com
+action.cc = siatsstechnicalsupportteam@stfltd.com
+###
+"
+Set-Content -Path $confPath\$confFile -Value $configData -Force
+#####END health.conf
+
 #####BEGIN indexes.conf
 #####Creates new file
 $confFile = "indexes.conf"
 $configData = "
 [default]
+###Splunk Checklist V-246917
 frozenTimePeriodInSecs = 31536000
+###
 ###Splunk Checklist V-221613
 enableDataIntegrityControl = true
 ###
