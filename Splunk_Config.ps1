@@ -136,7 +136,9 @@ frozenTimePeriodInSecs = 31536000
 ###Splunk Checklist V-221613
 enableDataIntegrityControl = true
 ###
-#enableTsidxReduction = true
+###Reduce indexes after 30 days
+enableTsidxReduction = true
+timePeriodInSecBeforeTsidxReduction = 2592000
 
 [linux]
 homePath = `$SPLUNK_DB\`$_index_name\db
