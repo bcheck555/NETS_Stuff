@@ -194,11 +194,21 @@ trustedIP = 127.0.0.1
 sessionTimeout = 15m
 ###
 
+[kvstore]
+sslKeysPath = C:\Temp\cert\LOG01_Splunk2.pem
+sslKeysPassword = $certPass
+caCertFile = $certPath\CAChain.pem
+
 [sslConfig]
 serverCert = $certPath\LOG01_Splunk2.pem
 sslPassword = $certPass
 sslRootCAPath = $certPath\CAChain.pem
 sslVerifyServerCert = true
+
+[diskUsage]
+###Splunk Checklist V-221625 (25% of drive)
+minFreeSpace =  30000
+###
 
 [lmpool:auto_generated_pool_download-trial]
 description = auto_generated_pool_download-trial
@@ -237,15 +247,6 @@ restartSplunkd = true
 
 [serverClass:Universal Forwarders - WIN:app:IndexerConfig_win]
 restartSplunkd = true
-
-# [serverClass:Universal Forwarders - WIN:app:TA-windows-certificate-store]
-# restartSplunkd = true
-
-# [serverClass:Universal Forwarders - WIN:app:TA-windows-firewall-status-check]
-# restartSplunkd = true
-
-# [serverClass:Universal Forwarders - WIN:app:TA-microsoft-windefender]
-# restartSplunkd = true
 
 [serverClass:Universal Forwarders - NIX]
 machineTypesFilter = linux-x86_64
