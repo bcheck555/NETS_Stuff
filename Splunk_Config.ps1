@@ -130,6 +130,11 @@ Set-Content -Path $confPath\$confFile -Value $configData -Force
 $confFile = "indexes.conf"
 $configData = "
 [default]
+
+[linux]
+homePath = `$SPLUNK_DB\`$_index_name\db
+coldPath = `$SPLUNK_DB\`$_index_name\colddb
+thawedPath = `$SPLUNK_DB\`$_index_name\thaweddb
 ###Hot buckets roll after 1 day
 maxHotSpanSecs = 86400
 ###Warm buckets count
@@ -144,15 +149,23 @@ enableDataIntegrityControl = true
 enableTsidxReduction = true
 timePeriodInSecBeforeTsidxReduction = 2592000
 
-[linux]
-homePath = `$SPLUNK_DB\`$_index_name\db
-coldPath = `$SPLUNK_DB\`$_index_name\colddb
-thawedPath = `$SPLUNK_DB\`$_index_name\thaweddb
-
 [wineventlog]
 homePath = `$SPLUNK_DB\`$_index_name\db
 coldPath = `$SPLUNK_DB\`$_index_name\colddb
 thawedPath = `$SPLUNK_DB\`$_index_name\thaweddb
+###Hot buckets roll after 1 day
+maxHotSpanSecs = 86400
+###Warm buckets count
+maxWarmDBCount = 30
+###Splunk Checklist V-246917
+frozenTimePeriodInSecs = 31536000
+###
+###Splunk Checklist V-221613
+enableDataIntegrityControl = true
+###
+###Reduce indexes after 30 days
+enableTsidxReduction = true
+timePeriodInSecBeforeTsidxReduction = 2592000
 "
 Set-Content -Path $confPath\$confFile -Value $configData -Force
 #####END indexes.conf
