@@ -205,6 +205,7 @@ sessionTimeout = 15m
 ###
 
 [kvstore]
+###Need to figure this certificate out
 sslKeysPath = C:\Temp\cert\LOG01_Splunk2.pem
 sslKeysPassword = $certPass
 caCertFile = $certPath\CAChain.pem
