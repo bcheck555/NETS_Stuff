@@ -130,6 +130,10 @@ Set-Content -Path $confPath\$confFile -Value $configData -Force
 $confFile = "indexes.conf"
 $configData = "
 [default]
+###Hot buckets roll after 1 day
+maxHotSpanSecs = 86400
+###Warm buckets count
+maxWarmDBCount = 30
 ###Splunk Checklist V-246917
 frozenTimePeriodInSecs = 31536000
 ###
